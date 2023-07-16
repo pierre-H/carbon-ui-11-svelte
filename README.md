@@ -1,4 +1,4 @@
-# Carbon UI 11 - Svelte
+# [👷 WIP] Carbon UI 11 - Svelte
 
 Adaptation of Carbon UI 11 for Svelte.
 Inspired by [carbon-components-svelte](https://github.com/carbon-design-system/carbon-components-svelte).
@@ -51,7 +51,7 @@ Your `app.scss` should contain :
 @use '@carbon/styles';
 ```
 
-For styling customization, check thhe [`@carbon/styles` documentation](https://github.com/carbon-design-system/carbon/tree/main/packages/styles).
+For styling customization, check the [`@carbon/styles` documentation](https://github.com/carbon-design-system/carbon/tree/main/packages/styles).
 
 ## Developing
 
