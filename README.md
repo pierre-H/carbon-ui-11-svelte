@@ -1,4 +1,4 @@
-# [👷 WIP] Carbon UI 11 - Svelte
+# 👷 WIP Carbon UI 11 - Svelte
 
 Adaptation of Carbon UI 11 for Svelte.
 Inspired by [carbon-components-svelte](https://github.com/carbon-design-system/carbon-components-svelte).
