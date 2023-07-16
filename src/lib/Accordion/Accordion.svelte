@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+	import '@carbon/styles/scss/components/accordion/_index.scss';
+</script>
+
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte';

@@ -4,11 +4,13 @@
 		| 'secondary'
 		| 'tertiary'
 		| 'danger'
-		| 'danger-tertiary'
-		| 'danger-ghost'
+		| 'danger--tertiary'
+		| 'danger--ghost'
 		| 'ghost';
 
 	export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+	import '@carbon/styles/scss/components/button/_index.scss';
 </script>
 
 <script lang="ts">
@@ -66,7 +68,7 @@
 	this={tag}
 	{...$$restProps}
 	bind:this={ref}
-	class="cds--btn {sizeClass} cds--btn--{kind.replaceAll('-', '--')} {$$restProps.class ?? ''}"
+	class="cds--btn {sizeClass} cds--btn--{kind} {$$restProps.class ?? ''}"
 	class:cds--skeleton={skeleton}
 	class:cds--btn--icon-only={iconOnly}
 	class:cds--btn--selected={selected}

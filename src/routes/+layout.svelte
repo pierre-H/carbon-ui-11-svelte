@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './app.scss';
+	import '@carbon/styles/scss/_reset.scss';
 </script>
 
 <slot />

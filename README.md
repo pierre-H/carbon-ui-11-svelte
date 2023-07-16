@@ -1,4 +1,4 @@
-# 👷 WIP Carbon UI 11 - Svelte
+# Carbon UI 11 - Svelte (👷 WIP)
 
 Adaptation of Carbon UI 11 for Svelte.
 Inspired by [carbon-components-svelte](https://github.com/carbon-design-system/carbon-components-svelte).
@@ -35,20 +35,10 @@ In you `+layout.svelte`, add :
 
 ```svelte
 <script lang="ts">
-	import './app.scss';
+	import '@carbon/styles/scss/_reset.scss';
 </script>
 
 <slot />
-```
-
-Your `app.scss` should contain :
-
-```scss
-@use '@carbon/styles/scss/config' with (
-	$css--font-face: false
-);
-
-@use '@carbon/styles';
 ```
 
 For styling customization, check the [`@carbon/styles` documentation](https://github.com/carbon-design-system/carbon/tree/main/packages/styles).
