@@ -18,10 +18,11 @@ I must add tests and documentation.
 
 ## Components
 
-| Component | Available | Tests | Documentation |
-| --------- | --------- | ----- | ------------- |
-| Accordion | ✅        | ❌    | ❌            |
-| Button    | ✅        | ❌    | ❌            |
+| Component   | Available | Tests | Documentation |
+| ----------- | --------- | ----- | ------------- |
+| Accordion   | ✅        | ❌    | ❌            |
+| Button      | ✅        | ❌    | ❌            |
+| AspectRatio | ✅        | ❌    | ❌            |
 
 ## Usage
 
