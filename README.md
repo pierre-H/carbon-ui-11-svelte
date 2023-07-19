@@ -23,6 +23,8 @@ I must add tests and documentation.
 | Accordion   | ✅        | ❌    | ❌            |
 | Button      | ✅        | ❌    | ❌            |
 | AspectRatio | ✅        | ❌    | ❌            |
+| Breadcrumb  | ✅        | ❌    | ❌            |
+| Link        | 👷        | ❌    | ❌            |
 
 ## Usage
 
