@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+	import '@carbon/styles/scss/components/breadcrumb/_index.scss';
+</script>
+
 <script lang="ts">
 	import BreadcrumbSkeleton from './BreadcrumbSkeleton.svelte';
 
@@ -6,7 +10,7 @@
 </script>
 
 {#if skeleton}
-	<BreadcrumbSkeleton />
+	<BreadcrumbSkeleton {noTrailingSlash} />
 {:else}
 	<ol
 		{...$$restProps}
