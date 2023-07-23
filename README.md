@@ -24,6 +24,7 @@ I must add tests and documentation.
 | Button      | ✅        | ❌    | ❌            |
 | AspectRatio | ✅        | ❌    | ❌            |
 | Breadcrumb  | ✅        | ❌    | ❌            |
+| Checkbox    | ✅        | ❌    | ❌            |
 | Link        | 👷        | ❌    | ❌            |
 
 ## Usage
