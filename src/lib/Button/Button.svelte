@@ -16,77 +16,73 @@
 <script lang="ts">
 	import type { HTMLButtonAttributes, HTMLAnchorAttributes } from 'svelte/elements';
 
-	interface $$Props extends HTMLButtonAttributes {
-		kind?: ButtonType;
-		size?: ButtonSize;
-		ref?: HTMLButtonElement | HTMLAnchorElement;
-		icon?: ConstructorOfATypedSvelteComponent;
-		selected?: boolean;
-		expressive?: boolean;
-		href?: HTMLAnchorAttributes['href'];
-		target?: HTMLAnchorAttributes['target'];
-		download?: HTMLAnchorAttributes['download'];
-		media?: HTMLAnchorAttributes['media'];
-		ping?: HTMLAnchorAttributes['ping'];
-		rel?: HTMLAnchorAttributes['rel'];
-		referrerpolicy?: HTMLAnchorAttributes['referrerpolicy'];
-		skeleton?: boolean;
-	}
+	let {
+		kind = 'primary',
+		size,
+		skeleton,
+		ref,
+		icon,
+		children,
+		href,
+		selected,
+		expressive,
+		class: buttonClass,
+		...restProps
+	} = $props<
+		HTMLButtonAttributes & {
+			kind?: ButtonType;
+			size?: ButtonSize;
+			ref?: HTMLButtonElement | HTMLAnchorElement;
+			icon?: ConstructorOfATypedSvelteComponent;
+			selected?: boolean;
+			expressive?: boolean;
+			href?: HTMLAnchorAttributes['href'];
+			target?: HTMLAnchorAttributes['target'];
+			download?: HTMLAnchorAttributes['download'];
+			media?: HTMLAnchorAttributes['media'];
+			ping?: HTMLAnchorAttributes['ping'];
+			rel?: HTMLAnchorAttributes['rel'];
+			referrerpolicy?: HTMLAnchorAttributes['referrerpolicy'];
+			skeleton?: boolean;
+		}
+	>();
 
-	export let kind: ButtonType = 'primary';
+	let sizeClass = $derived(size ? `cds--btn--${size} cds--layout--size-${size} ` : '');
 
-	export let size: ButtonSize | undefined = undefined;
+	let tag = $state('button');
 
-	$: sizeClass = size ? `cds--btn--${size} cds--layout--size-${size} ` : '';
+	$effect(() => {
+		if (href !== undefined) {
+			tag = 'a';
+		} else if (skeleton) {
+			tag = 'div';
+		} else {
+			tag = 'button';
+		}
+	});
 
-	export let skeleton: boolean = false;
-
-	let tag = 'button';
-
-	$: if (href !== undefined) {
-		tag = 'a';
-	} else if (skeleton) {
-		tag = 'div';
-	} else {
-		tag = 'button';
-	}
-
-	export let ref: HTMLButtonElement | HTMLAnchorElement | undefined = undefined;
-
-	export let icon: ConstructorOfATypedSvelteComponent | undefined = undefined;
-
-	$: hasIcon = icon != null || $$slots.icon;
-	$: iconOnly = !skeleton && hasIcon && $$slots['default'] == undefined;
-
-	export let selected: boolean = false;
-	export let expressive: boolean = false;
-
-	export let href: HTMLAnchorAttributes['href'] | undefined = undefined;
+	let hasIcon = $derived(icon != null);
+	let iconOnly = $derived(!skeleton && hasIcon && !children);
 </script>
 
 <svelte:element
 	this={tag}
-	{...$$restProps}
+	{...restProps}
 	bind:this={ref}
-	class="cds--btn {sizeClass} cds--btn--{kind} {$$restProps.class ?? ''}"
+	class="cds--btn {sizeClass} cds--btn--{kind} {buttonClass ?? ''}"
 	class:cds--skeleton={skeleton}
 	class:cds--btn--icon-only={iconOnly}
 	class:cds--btn--selected={selected}
 	class:cds--btn--expressive={expressive}
-	on:click
-	on:focus
-	on:mouseover
-	on:mouseenter
-	on:mouseleave
-	role={$$restProps.role ?? 'button'}
-	tabindex={$$restProps.tabindex ?? 0}
+	role={restProps.role ?? 'button'}
+	tabindex={restProps.tabindex ?? 0}
 >
 	{#if !skeleton}
-		<slot />
+		{#if children}
+			{@render children()}
+		{/if}
 		{#if hasIcon}
-			<slot name="icon">
-				<svelte:component this={icon} class="cds--btn__icon" />
-			</slot>
+			<svelte:component this={icon} class="cds--btn__icon" />
 		{/if}
 	{/if}
 </svelte:element>

@@ -1,17 +1,20 @@
 <script lang="ts">
-	import type { HTMLDivAttributes } from 'svelte/elements';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface $$Props extends HTMLDivAttributes {
-		stacked?: boolean;
-	}
-
-	export let stacked: boolean = false;
+	let {
+		stacked,
+		class: buttonSetClass,
+		children,
+		...restProps
+	} = $props<HTMLDivAttributes & { stacked?: boolean }>();
 </script>
 
 <div
-	{...$$restProps}
-	class="cds--btn-set {$$restProps.class ?? ''}"
+	{...restProps}
+	class="cds--btn-set {buttonSetClass ?? ''}"
 	class:cds--btn-set--stacked={stacked}
 >
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 </div>
