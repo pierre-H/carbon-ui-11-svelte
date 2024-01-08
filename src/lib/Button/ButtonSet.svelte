@@ -6,7 +6,7 @@
 		class: buttonSetClass,
 		children,
 		...restProps
-	} = $props<HTMLDivAttributes & { stacked?: boolean }>();
+	} = $props<HTMLAttributes<HTMLDivElement> & { stacked?: boolean }>();
 </script>
 
 <div
